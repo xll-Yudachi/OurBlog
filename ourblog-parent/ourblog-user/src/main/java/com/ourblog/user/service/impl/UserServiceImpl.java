@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.ourblog.user.repository.UserRepository;
 import com.ourblog.user.service.UserService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -30,5 +33,16 @@ public class UserServiceImpl implements UserService {
     public User saveUser(User user){
         User save = userRepository.save(user);
         return save;
+    }
+
+    @Override
+    public User findUser() {
+        //从Header中获取用户信息
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = servletRequestAttributes.getRequest();
+        String userStr = request.getHeader("user");
+        User user = new User();
+        user.setUsername(userStr);
+        return user;
     }
 }

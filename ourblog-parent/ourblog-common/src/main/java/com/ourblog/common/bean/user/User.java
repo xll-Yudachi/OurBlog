@@ -28,4 +28,6 @@ public class User extends BaseEntity{
     private String password;
     @Column(name = "u_email")
     private String email;
+    @Column(name = "u_role")
+    private String role;
 }

@@ -35,4 +35,10 @@ public class UserController {
         User saveUser = userService.saveUser(user);
         return new Result(CommonCode.SUCCESS, saveUser);
     }
+
+    @GetMapping("/findUser")
+    public Result findUser(){
+        User user = userService.findUser();
+        return new Result(CommonCode.SUCCESS, user);
+    }
 }

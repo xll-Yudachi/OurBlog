@@ -1,0 +1,16 @@
+server:
+  port: 9401
+spring:
+  application:
+    name: ourblog-oauth2-auth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://139.159.134.136:8848,http://139.159.134.136:8849，http://139.159.134.136:8850 #配置Nacos地址
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  redis:
+    database: 1
+    port: 6379
+    host: 8.129.173.191
+    password:
